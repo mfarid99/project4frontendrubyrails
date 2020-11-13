@@ -1,4 +1,4 @@
-import React, { useReducer } from "react"
+import React, {useContext, useReducer } from "react"
 
 ///////////////////
 //INITIAL STATE
@@ -24,10 +24,10 @@ const reducer = (state, action) => {
 //AppContext (object that creates State to everything)
 ////////////////////
 
-Const AppContext = React.createContext(null)
+const AppContext = React.createContext(null);
 
 //AppState Component
-export const appState = (props) => {
+export const AppState = (props) => {
 //dispatch passes action to the reducer
     const [state, dispatch] = useReducer(reducer, initialState)
 
