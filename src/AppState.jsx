@@ -5,21 +5,32 @@ import React, {useContext, useReducer } from "react"
 //////////////////
 
 const initialState = {
-    url: "http://mfproject4backend.herokuapp.com"
-}
+    url: "http://mfproject4backend.herokuapp.com",
+    token: null,
+    username: null
+};
 
 /////////////////
 //REDUCER (one big function that handles all different situations)
 /////////////////
 //action = {type: "", payload: ---}
 const reducer = (state, action) => {
-
+    let newState;
     switch(action.type) {
-        default: 
-            return state 
-    }
-}
-
+        case "auth" :
+            newState = { ...state, ...action.payload };
+            return newState;
+            break;
+            case "logout":
+                newState = {...state, token: null, username: null}
+                window.localStorage.removeItem("auth")
+            return newState
+            default: 
+            return state;
+            break;
+            }
+                };
+                
 ////////////////////
 //AppContext (object that creates State to everything)
 ////////////////////
